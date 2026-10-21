@@ -1,0 +1,33 @@
+spring:
+  application:
+    name: good-meet
+  datasource:
+    url: ${DB_URL:jdbc:postgresql://localhost:5432/goodmeet}
+    username: ${DB_USERNAME:goodmeet}
+    password: ${DB_PASSWORD:goodmeet}
+  jpa:
+    open-in-view: false
+    hibernate:
+      ddl-auto: validate
+    properties:
+      hibernate:
+        jdbc:
+          time_zone: UTC
+  flyway:
+    enabled: true
+    validate-on-migrate: false
+  modulith:
+    detection-strategy: explicitly-annotated
+
+server:
+  port: 8080
+  error:
+    include-message: always
+    include-binding-errors: always
+
+application:
+  livekit:
+    url: ${LIVEKIT_URL:ws://localhost:7880}
+    api-key: ${LIVEKIT_API_KEY:devkey}
+    api-secret: ${LIVEKIT_API_SECRET:goodmeet-livekit-dev-secret-0123456789abcdef}
+    token-ttl: 10m
